@@ -5,6 +5,7 @@ namespace Jade;
 use Jade\Parser\Exception as ParserException;
 use Jade\Parser\ExtensionsHelper;
 
+#[\AllowDynamicProperties]
 class Parser
 {
     public static $includeNotFound = '.alert.alert-danger Page not found.';
@@ -73,7 +74,7 @@ class Parser
         $path = (
             $isAbsolutePath
             ? rtrim($this->options['basedir'], '/\\')
-            : dirname($this->filename)
+            : dirname((string) $this->filename)
         ) . DIRECTORY_SEPARATOR . $path;
         $extensions = new ExtensionsHelper($this->extension);
 

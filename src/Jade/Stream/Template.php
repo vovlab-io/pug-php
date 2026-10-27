@@ -10,6 +10,11 @@ namespace Jade\Stream;
 class Template
 {
     /**
+     * @var resource|null set by PHP on every stream wrapper instance
+     */
+    public $context;
+
+    /**
      * @var int
      */
     private $position = 0;
@@ -20,13 +25,34 @@ class Template
     private $data = '';
 
     /**
+     * @var array compiled sources awaiting inclusion, indexed by key
+     */
+    private static $templates = array();
+
+    /**
+     * Store a compiled source and return the key to use in the stream path.
+     *
+     * @param string $input
+     *
+     * @return string
+     */
+    public static function register($input)
+    {
+        $key = md5($input);
+        self::$templates[$key] = $input;
+
+        return $key;
+    }
+
+    /**
      * @param $path
      *
      * @return bool
      */
     public function stream_open($path)
     {
-        $this->data = substr(strstr($path, ';'), 1);
+        $key = substr(strstr($path, ';'), 1);
+        $this->data = isset(self::$templates[$key]) ? self::$templates[$key] : $key;
 
         return true;
     }

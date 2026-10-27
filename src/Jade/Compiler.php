@@ -10,6 +10,7 @@ use Jade\Parser\Exception as ParserException;
 /**
  * Class Jade Compiler.
  */
+#[\AllowDynamicProperties]
 class Compiler extends Options
 {
     /**

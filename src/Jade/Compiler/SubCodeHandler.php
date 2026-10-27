@@ -149,7 +149,7 @@ class SubCodeHandler
     {
         return function () use (&$output, &$key, &$value) {
             foreach (array('key', 'value') as $var) {
-                ${$var} = trim(${$var});
+                ${$var} = trim((string) ${$var});
                 if (empty(${$var})) {
                     continue;
                 }

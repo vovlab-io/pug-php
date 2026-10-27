@@ -79,7 +79,7 @@ abstract class Visitor extends KeywordsCompiler
      *
      * @throws \Exception
      */
-    protected function visitDoctype(Doctype $doctype = null)
+    protected function visitDoctype(?Doctype $doctype = null)
     {
         $doc = (empty($doctype->value) || $doctype === null || !isset($doctype->value))
             ? 'default'

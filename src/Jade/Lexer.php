@@ -7,6 +7,7 @@ use Jade\Lexer\Scanner;
 /**
  * Class Jade\Lexer.
  */
+#[\AllowDynamicProperties]
 class Lexer extends Scanner
 {
     /**

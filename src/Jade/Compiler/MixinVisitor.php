@@ -104,7 +104,7 @@ abstract class MixinVisitor extends MixinVisitorUtils
 
         array_unshift($arguments, 'attributes');
         $arguments = $this->splitArguments(implode(',', $arguments));
-        array_walk($arguments, array(get_class(), 'initArgToNull'));
+        array_walk($arguments, array(__CLASS__, 'initArgToNull'));
         $this->visitMixinCodeAndBlock($name, $block, $arguments);
 
         if (is_null($previousVisitedMixin)) {

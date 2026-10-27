@@ -21,7 +21,7 @@ abstract class AbstractFilter implements JadeFilterInterface
      *
      * @return mixed
      */
-    protected function getNodeString(Filter $node, Compiler $compiler = null)
+    protected function getNodeString(Filter $node, ?Compiler $compiler = null)
     {
         return array_reduce($node->block->nodes, function ($result, $line) use ($compiler) {
             return $result . (

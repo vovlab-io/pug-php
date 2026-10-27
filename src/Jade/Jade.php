@@ -218,7 +218,9 @@ class Jade extends PugJsEngine
             stream_wrapper_register($this->options['stream'], 'Jade\\Stream\\Template');
         }
 
-        return $this->options['stream'] . '://data;' . $input;
+        // Pass a short key instead of the whole source as the include path: since PHP 8.4,
+        // every closure name embeds its file path, which multiplied memory by the source size.
+        return $this->options['stream'] . '://data;' . \Jade\Stream\Template::register($input);
     }
 
     /**

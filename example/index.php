@@ -25,7 +25,7 @@ $app->action('login', function () {
     $message['error']   = !!$_POST;
     $message['success'] = false;
 
-    if (trim($username) && trim($password)) {
+    if (trim((string) $username) && trim((string) $password)) {
         $message['error']   = false;
         $message['success'] = true;
     }

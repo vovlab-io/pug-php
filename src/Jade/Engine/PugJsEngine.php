@@ -48,7 +48,7 @@ class PugJsEngine extends Options
         }
 
         $options = array(
-            'path' => realpath($filename),
+            'path' => realpath((string) $filename),
             'basedir' => $this->options['basedir'],
             'pretty' => $this->options['prettyprint'],
             'out' => $workDirectory,

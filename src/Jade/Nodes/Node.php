@@ -2,6 +2,7 @@
 
 namespace Jade\Nodes;
 
+#[\AllowDynamicProperties]
 abstract class Node
 {
     public function isInline()
